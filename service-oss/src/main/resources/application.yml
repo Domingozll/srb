@@ -8,7 +8,7 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 192.168.56.10:8848 # 配置nacos注册中心地址
+        server-addr: 192.168.1.100:8848 # 配置nacos注册中心地址
 
 # 阿里云对象存储服务配置
 #aliyun:

@@ -11,10 +11,10 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/srb_core?serverTimezone=GMT%2B8&characterEncoding=utf-8
     username: root
-    password: 123456
+    password: 12345678
   # redis相关配置
   redis:
-    host: 192.168.56.10
+    host: 192.168.1.100
     port: 6379
     database: 0
     timeout: 3000ms # 最大等待时间，超时则抛出异常
@@ -27,13 +27,13 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 192.168.56.10:8848 # 配置nacos注册中心地址
+        server-addr: 192.168.1.100:8848 # 配置nacos注册中心地址
   rabbitmq:
-    host: 192.168.56.10
+    host: 192.168.1.101
     port: 5672
     virtual-host: /srb-host
-    username: srb-user
-    password: 1234
+    username: admin
+    password: 123456
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
