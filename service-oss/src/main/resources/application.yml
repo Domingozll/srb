@@ -19,11 +19,14 @@ spring:
 #    bucketName: xxxxxx
 
 # 阿里云对象存储服务配置
-aliyun:
+fs:
+  type: LOCAL
   oss:
     endpoint: oss-cn-beijing.aliyuncs.com
     keyId: xxxx
     keySecret: xxxx
     bucketName: srb-file-wwj
+  local:
+    localPath: ${user.dir}/file-storage
 
 

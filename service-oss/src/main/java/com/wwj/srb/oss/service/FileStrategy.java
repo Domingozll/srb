@@ -2,7 +2,7 @@ package com.wwj.srb.oss.service;
 
 import java.io.InputStream;
 
-public interface FileService {
+public interface FileStrategy {
 
     /**
      * 文件上传至阿里云

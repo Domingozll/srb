@@ -3,25 +3,25 @@ package com.wwj.srb.oss.controller.api;
 import com.wwj.common.result.R;
 import com.wwj.common.result.ResponseEnum;
 import com.wwj.common.result.exception.BusinessException;
-import com.wwj.srb.oss.service.FileService;
+import com.wwj.srb.oss.service.FileStrategy;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.io.InputStream;
 
-@Api(tags = "阿里云文件管理")
+@Api(tags = "文件管理")
 @RestController
 //@CrossOrigin
 @RequestMapping("/api/oss/file")
+@RequiredArgsConstructor
 public class FileController {
 
-    @Autowired
-    private FileService fileService;
+    private final FileStrategy fileService;
 
     @ApiOperation("文件上传")
     @PostMapping("/upload")
