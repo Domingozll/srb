@@ -21,7 +21,7 @@ import java.io.InputStream;
 @RequiredArgsConstructor
 public class FileController {
 
-    private final FileStrategy fileService;
+    private final FileStrategy fileStrategy;
 
     @ApiOperation("文件上传")
     @PostMapping("/upload")
@@ -35,7 +35,7 @@ public class FileController {
             InputStream inputStream = file.getInputStream();
             // 获取文件扩展名
             String originalFilename = file.getOriginalFilename();
-            String url = fileService.upload(inputStream, module, originalFilename);
+            String url = fileStrategy.upload(inputStream, module, originalFilename);
             return R.ok().message("文件上传成功").data("url", url);
         } catch (IOException e) {
             throw new BusinessException(ResponseEnum.UPLOAD_ERROR, e);
@@ -47,7 +47,7 @@ public class FileController {
     public R remove(
             @ApiParam(value = "要删除的文件", required = true)
             @RequestParam("url") String url) {
-        fileService.removeFile(url);
+        fileStrategy.removeFile(url);
         return R.ok().message("文件删除成功");
     }
 }
