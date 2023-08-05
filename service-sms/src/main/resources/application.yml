@@ -24,7 +24,7 @@ spring:
   rabbitmq:
     host: 192.168.1.101
     port: 5672
-    virtual-host: /srb-host
+    virtual-host: srb-host
     username: admin
     password: 123456
 

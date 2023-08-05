@@ -3,22 +3,19 @@ package com.wwj.srb.sms.controller.api;
 import com.wwj.common.result.R;
 import com.wwj.common.result.ResponseEnum;
 import com.wwj.common.result.exception.Assert;
-import com.wwj.common.util.RandomUtils;
 import com.wwj.common.util.RegexValidateUtils;
 import com.wwj.srb.sms.client.CoreUserInfoClient;
-import com.wwj.srb.sms.service.SmsService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -28,14 +25,11 @@ import java.util.concurrent.TimeUnit;
 @Api(tags = "短信管理")
 //@CrossOrigin //跨域
 @Slf4j
+@RequiredArgsConstructor
 public class ApiSmsController {
 
-    @Autowired
-    private SmsService smsService;
-    @Resource
-    private RedisTemplate redisTemplate;
-    @Autowired
-    private CoreUserInfoClient coreUserInfoClient;
+    private final RedisTemplate redisTemplate;
+    private final CoreUserInfoClient coreUserInfoClient;
 
     @ApiOperation("获取验证码")
     @GetMapping("/send/{mobile}")
@@ -53,7 +47,8 @@ public class ApiSmsController {
 
         // 随机出一个四位数的验证码
         Map<String, Object> map = new HashMap<>();
-        String code = RandomUtils.getFourBitRandom();
+//        String code = RandomUtils.getFourBitRandom();
+        String code = "1234";
         map.put("code", code);
 //        smsService.send(mobile, SmsProperties.TEMPLATE_CODE, map); // 调用阿里云短信服务发送短信
 
